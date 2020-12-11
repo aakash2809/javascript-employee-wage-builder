@@ -1,10 +1,13 @@
-const IS_PRESENT = 1; //default present status
 const WAGE_PER_HOUR = 20; //wage per hour
 const FULL_DAY_HOUR = 8; //Number of fixed Hours for full day
 const PART_TIME_HOUR = 4; //Number of fixed Hours for half day
+const TOTAL_WORKING_DAYS = 20;
 var calculateDailyWage = 0; //Variable to assign calculated daily wage
-var employeeStatus; //Variable to assign random genrated key for half day or full day
 var dayHours; //Number of hours work done.
+var numberOfDaysDonebyEmployee = 0;// total working days
+var numberOfHalfDays = 0;
+var numberOfFulldays = 0;
+var count = 0;
 
 //To find how many hours work done by emmployee
 function getWorkPerDay(employeeStatus) {
@@ -24,19 +27,28 @@ function getWorkPerDay(employeeStatus) {
 console.log("           Welcome to EmployeeWage Computation System                 ");
 console.log("----------------------------------------------------------------------");
 
-var empAttendanceCheck = Math.floor(Math.random() * 10) % 2; //Employee status computation
+// loop till working days per month
+while (count < TOTAL_WORKING_DAYS) {
+    let employeeStatus = (Math.floor(Math.random() * 10) % 2); // key genration for half day or full day
 
-if (empAttendanceCheck == IS_PRESENT) {
-    console.log("Employee is Present");
-} else {
-    console.log("Employee is not Present");
+    // counting number of full days and half days
+    if (employeeStatus == 0)
+        numberOfHalfDays++;
+    else
+        numberOfFulldays++;
+
+    let dayHours = getWorkPerDay(employeeStatus);
+    calculateDailyWage = calculateDailyWage + (dayHours * WAGE_PER_HOUR);
+    count++;
+
 }
 
-employeeStatus = (Math.floor(Math.random() * 10) % 2); // key genration for half day or full day
-dayHours = getWorkPerDay(employeeStatus);
+numberOfDaysDonebyEmployee = numberOfFulldays + numberOfHalfDays;// total working days computation
 
-calculateDailyWage = (dayHours * WAGE_PER_HOUR); // daily full day wage camputation
-console.log("Employee daily  day wage according to full day or half day - " + calculateDailyWage);
+console.log("total half working days - " + numberOfHalfDays);
+console.log("total full working days - " + numberOfFulldays);
+console.log("total working days      - " + numberOfDaysDonebyEmployee);
+console.log("total wage              - " + calculateDailyWage);
 
 
 
