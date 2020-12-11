@@ -1,24 +1,14 @@
-
 const IS_PRESENT = 1; //default present status
 const WAGE_PER_HOUR = 20; //wage per hour
 const FULL_DAY_HOUR = 8; //Number of fixed Hours for full day
 const PART_TIME_HOUR = 4; //Number of fixed Hours for half day
 var calculateDailyWage = 0; //Variable to assign calculated daily wage
-<<<<<<< HEAD
-var employeeStatus; //Variable to assign random genration key for half day or full
-var dayHours;
-
-//To find how many hours work done by emmployee
-function getWorkPerDay(employeeStatus) {
-    let workDone = 0;
-=======
 var employeeStatus; //Variable to assign random genrated key for half day or full day
 var dayHours; //Number of hours work done.
 
 //To find how many hours work done by emmployee
 function getWorkPerDay(employeeStatus) {
     var workDone = 0;
->>>>>>> uc4-compute-wage-using-switch-cases
     switch (employeeStatus) {
         case 0:
             workDone = FULL_DAY_HOUR;
@@ -30,11 +20,6 @@ function getWorkPerDay(employeeStatus) {
     }
     return workDone;
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> uc4-compute-wage-using-switch-cases
 
 console.log("           Welcome to EmployeeWage Computation System                 ");
 console.log("----------------------------------------------------------------------");
@@ -47,21 +32,6 @@ if (empAttendanceCheck == IS_PRESENT) {
     console.log("Employee is not Present");
 }
 
-<<<<<<< HEAD
-
-employeeStatus = (Math.floor(Math.random() * 10) % 2); // key genration for half day or full day
-dayHours = getWorkPerDay(employeeStatus);
-
-
-
-
-
-calculateDailyWage = (FULL_DAY_HOUR * WAGE_PER_HOUR); //daily full day wage camputation
-console.log("Employee daily Full day wage - " + calculateDailyWage);
-
-calculateDailyWage = (PART_TIME_HOUR * WAGE_PER_HOUR); //daily part time wage camputation
-console.log("Employee daily Part time day wage - " + calculateDailyWage);
-=======
 employeeStatus = (Math.floor(Math.random() * 10) % 2); // key genration for half day or full day
 dayHours = getWorkPerDay(employeeStatus);
 
@@ -69,5 +39,4 @@ calculateDailyWage = (dayHours * WAGE_PER_HOUR); // daily full day wage camputat
 console.log("Employee daily  day wage according to full day or half day - " + calculateDailyWage);
 
 
->>>>>>> uc4-compute-wage-using-switch-cases
 
