@@ -1,15 +1,12 @@
 const IS_PRESENT = 1;
-const WAGE_PER_HOUR = 20;
 const FULL_DAY_HOUR = 8;
 const PART_TIME_HOUR = 4;
-const TOTAL_WORKING_DAYS_PER_MONTH = 20;
-const TOTAL_WORKING_HOURS_PER_MONTH = 100;
 
 var calculateDailyWage = 0;
 var workingHoursCompleted = 0;
 var numberOfHalfDays = 0;
 var numberOfFulldays = 0;
-var workingDaysCompleted  = 0;
+var workingDaysCompleted = 0;
 var numberofPresent = 0;
 var numberOfAbsent = 0;
 
@@ -37,7 +34,7 @@ getWorkPerDay = (employeeStatus) => {
  * and then return updated wage as per attendance
  * It also computation of total wage based on half days and full days
 */
-computeEmpWage = (empAttandanceStatus) => {
+computeEmpWage = (empAttandanceStatus, WAGE_PER_HOUR) => {
     if (empAttandanceStatus == IS_PRESENT) {
         numberofPresent++;
         let empDayStatus = (Math.floor(Math.random() * 10) % 2);
@@ -46,7 +43,7 @@ computeEmpWage = (empAttandanceStatus) => {
         dayHours = getWorkPerDay(empDayStatus);
         workingHoursCompleted = workingHoursCompleted + dayHours;
 
-        workingHoursCompleted > 100 ? workingHoursCompleted = 100 :  workingHoursCompleted;
+        workingHoursCompleted > 100 ? workingHoursCompleted = 100 : workingHoursCompleted;
 
         calculateDailyWage = calculateDailyWage + (dayHours * WAGE_PER_HOUR);
     } else {
@@ -62,15 +59,14 @@ computeEmpWage = (empAttandanceStatus) => {
  * Computation of total wage delegated to a seprate function
  * Print the valuable results
 */
-main = () => {
-    console.log("Welcome to EmployeeWage Computation System ");
-
+main = (companyName, TOTAL_WORKING_DAYS_PER_MONTH, TOTAL_WORKING_HOURS_PER_MONTH, WAGE_PER_HOUR) => {
     while (workingDaysCompleted < TOTAL_WORKING_DAYS_PER_MONTH && workingHoursCompleted < TOTAL_WORKING_HOURS_PER_MONTH) {
         let empAttandanceStatus = (Math.floor(Math.random() * 10) % 2);
-        calculateDailyWage = computeEmpWage(empAttandanceStatus);
+        calculateDailyWage = computeEmpWage(empAttandanceStatus, WAGE_PER_HOUR);
         workingDaysCompleted++;
     }
 
+    console.log("Company Name             - " + companyName);
     console.log("Number of days presents  - " + numberofPresent);
     console.log("total of days absents    - " + numberOfAbsent);
     console.log("total half working days  - " + numberOfHalfDays);
@@ -79,4 +75,7 @@ main = () => {
     console.log("total wage               - " + calculateDailyWage);
 }
 
-main();
+console.log("Welcome to EmployeeWage Computation System ");
+main("Airtel", 20, 100, 20);
+console.log();
+main("Dmart", 30, 200, 40);
