@@ -9,6 +9,8 @@ var numberOfFulldays = 0;
 var workingDaysCompleted = 0;
 var numberofPresent = 0;
 var numberOfAbsent = 0;
+var totalWageOfCompnies = new Array();
+var countTotrackArrayOfWages = 0;
 
 /**
  * @description this function will return  how many hours work done by emmployee
@@ -65,7 +67,9 @@ main = (companyName, TOTAL_WORKING_DAYS_PER_MONTH, TOTAL_WORKING_HOURS_PER_MONTH
         calculateDailyWage = computeEmpWage(empAttandanceStatus, WAGE_PER_HOUR);
         workingDaysCompleted++;
     }
-
+    
+    totalWageOfCompnies.push(companyName +":"+calculateDailyWage +" " );
+    
     console.log("Company Name             - " + companyName);
     console.log("Number of days presents  - " + numberofPresent);
     console.log("total of days absents    - " + numberOfAbsent);
@@ -79,3 +83,5 @@ console.log("Welcome to EmployeeWage Computation System ");
 main("Airtel", 20, 100, 20);
 console.log();
 main("Dmart", 30, 200, 40);
+console.log();
+console.log("Total Wage Of Compnies are " + totalWageOfCompnies);
