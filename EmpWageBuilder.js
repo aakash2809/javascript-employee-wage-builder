@@ -36,11 +36,12 @@ class CompanyEmpWage {
         if (empAttandanceStatus == this.IS_PRESENT) {
             this.numberofPresent++;
             let empDayStatus = (Math.floor(Math.random() * 10) % 2);
-            empDayStatus == 0 ? this.numberOfHalfDays++ : this.numberOfFulldays++
-
+            (empDayStatus == 0) ? this.numberOfHalfDays++ : this.numberOfFulldays++
             let dayHours = this.getWorkPerDay(empDayStatus);
+
             this.dailyWage[this.index] = (dayHours * WAGE_PER_HOUR);
             this.index++;
+
             this.workingHoursCompleted = this.workingHoursCompleted + dayHours;
 
             (this.workingHoursCompleted > this.TOTAL_WORKING_HOURS_PER_MONTH) ?
@@ -68,14 +69,13 @@ class CompanyEmpWage {
         }
     }
 
-    //Override toString()
-    toString = () => {
-        console.log(this.companyName + " :");
-        for (i = 0; i < this.TOTAL_WORKING_DAYS_PER_MONTH; i++) {
-            j = i + 1;
-            console.log("Day:" + j + " Wage " + this.dailyWage[i]);
+    //This method is printing the daily wage and the total wage of employee for a month
+    showEmpDailyWage = () => {
+        console.log("\n" + this.companyName + " :");
+        for (let i = 0; i < this.index; i++) {
+            console.log("Day:" + (i + 1) + " Wage " + this.dailyWage[i]);
         }
-        return "totalEmpWage=" + this.calculateDailyWage;
+        console.log("Total wage of month : " + this.calculateDailyWage + "\n");
     }
 }
 
@@ -87,12 +87,12 @@ empWageBuilder = () => {
 
     Airtel.computeEmpWage();
     totalWageOfCompnies.push(Airtel.companyName + ": " + Airtel.calculateDailyWage + " ");
-    console.log("\n");
+    Airtel.showEmpDailyWage();
+
     Dmart.computeEmpWage();
     totalWageOfCompnies.push(Dmart.companyName + ": " + Dmart.calculateDailyWage + " ");
-    console.log(Airtel);
-    console.log("\n");
-    console.log(Dmart);
+    Dmart.showEmpDailyWage();
+
     console.log(totalWageOfCompnies);
 }
 
