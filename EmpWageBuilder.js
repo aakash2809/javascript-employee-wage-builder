@@ -14,6 +14,8 @@ class CompanyEmpWage {
     workingDaysCompleted = 0;
     numberofPresent = 0;
     numberOfAbsent = 0;
+    dailyWage = new Array();
+    index = 0;
 
     constructor(companyName, TOTAL_WORKING_DAYS_PER_MONTH, TOTAL_WORKING_HOURS_PER_MONTH, WAGE_PER_HOUR) {
         this.companyName = companyName;
@@ -37,6 +39,8 @@ class CompanyEmpWage {
             empDayStatus == 0 ? this.numberOfHalfDays++ : this.numberOfFulldays++
 
             let dayHours = this.getWorkPerDay(empDayStatus);
+            this.dailyWage[this.index] = (dayHours * WAGE_PER_HOUR);
+            this.index++;
             this.workingHoursCompleted = this.workingHoursCompleted + dayHours;
 
             (this.workingHoursCompleted > this.TOTAL_WORKING_HOURS_PER_MONTH) ?
@@ -62,14 +66,16 @@ class CompanyEmpWage {
             this.calculateDailyWage = this.wageCalculator(empAttandanceStatus, this.WAGE_PER_HOUR);
             this.workingDaysCompleted++;
         }
+    }
 
-        console.log("Company Name             - " + this.companyName);
-        console.log("Number of days presents  - " + this.numberofPresent);
-        console.log("total of days absents    - " + this.numberOfAbsent);
-        console.log("total half working days  - " + this.numberOfHalfDays);
-        console.log("total full working days  - " + this.numberOfFulldays);
-        console.log("Number of hours completed- " + this.workingHoursCompleted);
-        console.log("total wage               - " + this.calculateDailyWage);
+    //Override toString()
+    toString = () => {
+        console.log(this.companyName + " :");
+        for (i = 0; i < this.TOTAL_WORKING_DAYS_PER_MONTH; i++) {
+            j = i + 1;
+            console.log("Day:" + j + " Wage " + this.dailyWage[i]);
+        }
+        return "totalEmpWage=" + this.calculateDailyWage;
     }
 }
 
@@ -84,6 +90,9 @@ empWageBuilder = () => {
     console.log("\n");
     Dmart.computeEmpWage();
     totalWageOfCompnies.push(Dmart.companyName + ": " + Dmart.calculateDailyWage + " ");
+    console.log(Airtel);
+    console.log("\n");
+    console.log(Dmart);
     console.log(totalWageOfCompnies);
 }
 
