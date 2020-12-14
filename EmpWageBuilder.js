@@ -80,10 +80,10 @@ empWageBuilder = () => {
     var totalWageOfCompnies = new Array();
 
     Airtel.computeEmpWage();
-    totalWageOfCompnies.push(Airtel.companyName + ":" + Airtel.calculateDailyWage + " ");
+    totalWageOfCompnies.push(Airtel.companyName + ": " + Airtel.calculateDailyWage + " ");
     console.log("\n");
     Dmart.computeEmpWage();
-    totalWageOfCompnies.push(Dmart.companyName + ":" + Dmart.calculateDailyWage + " ");
+    totalWageOfCompnies.push(Dmart.companyName + ": " + Dmart.calculateDailyWage + " ");
     console.log(totalWageOfCompnies);
 }
 
