@@ -77,9 +77,14 @@ class CompanyEmpWage {
 empWageBuilder = () => {
     Airtel = new CompanyEmpWage("Airtel", 20, 100, 20);
     Dmart = new CompanyEmpWage("Dmart", 30, 200, 40);
+    var totalWageOfCompnies = new Array();
+
     Airtel.computeEmpWage();
+    totalWageOfCompnies.push(Airtel.companyName + ":" + Airtel.calculateDailyWage + " ");
     console.log("\n");
     Dmart.computeEmpWage();
+    totalWageOfCompnies.push(Dmart.companyName + ":" + Dmart.calculateDailyWage + " ");
+    console.log(totalWageOfCompnies);
 }
 
 empWageBuilder();
